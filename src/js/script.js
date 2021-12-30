@@ -24,6 +24,14 @@ window.addEventListener('DOMContentLoaded', () => {
                 canvasContext.lineWidth = 16;
                 canvasContext.strokeStyle = '#f3b60d';
                 canvasContext.strokeRect(0, 0, base_image.width, base_image.height);
+                
+                var logo = new Image();
+                logo.src = 'src/img/logo-menor.png';
+                logo.onload = function() {
+                    canvasContext.beginPath();
+                    canvasContext.drawImage(logo, base_image.width - 150, base_image.height - 164);
+                }
+
             }
             downloadImageBtn.classList.remove('d-none');
         }
