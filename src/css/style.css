@@ -1,0 +1,425 @@
+:root{
+    --primaria: #f3b60d;
+    --primaria-escuro: #d46000;
+    --cinza-claro: #F5F5F5;
+    --cinza-medio: #8A8A8A;
+    --cinza-escuro: #464646;
+    --amarelo: #FFB800;
+    --vermelho: #dd1111;
+    --vermelho-claro: #f89c9c;
+    --vermelho-escuro: #830707;
+    --verde: #0DBC3E;
+    --preto: #1d1d1d;
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    color: var(--primaria);
+}
+
+html, 
+body{
+    position: relative;  
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primaria);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primaria-escuro);
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+}
+
+button:disabled {
+    cursor: default;
+    opacity: 50%;
+}
+
+textarea {
+    resize: none;
+}
+
+input{
+    background: none;
+}
+
+/* <===========================::Utilities===========================> */
+
+.m-0{
+    margin: 0 !important;
+}
+
+.mt-0{
+    margin-top: 0;
+}
+
+.mt-8{
+    margin-top: 8px;
+}
+
+.mt-16{
+    margin-top: 16px;
+}
+
+.mt-32{
+    margin-top: 32px;
+}
+
+.mt-64{
+    margin-top: 64px;
+}
+
+.ml-8{
+    margin-left: 8px;
+}
+
+.mb-8{
+    margin-bottom: 8px;
+}
+
+.mb-16{
+    margin-bottom: 16px;
+}
+
+.mb-26{
+    margin-bottom: 26px;
+}
+
+.mb-32{
+    margin-bottom: 32px;
+}
+
+.gap-y{
+    gap: 0 46px;
+}
+
+.gap-y-16{
+    gap: 0 16px;
+}
+
+.gap-x{
+    gap: 56px 0;
+}
+
+.gap-x-8{
+    gap: 8px 0;
+}
+
+.gap-x-16{
+    gap: 16px 0;
+}
+
+.gap{
+    gap: 56px 46px;
+}
+
+.gap-16{
+    gap: 16px 16px;
+}
+
+.d-none{
+    display: none !important;
+}
+
+.overflow-x{
+    overflow-x: auto;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+
+.row-container.reverse {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.column-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.column-container.reverse {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.justify-flex-end {
+    justify-content: flex-end;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.stretch {
+    flex: 1;
+}
+
+.upperC {
+    text-transform: uppercase;
+}
+
+.lg-width{
+    max-width: 960px;
+}
+
+.md-width{
+    max-width: 620px;
+}
+
+.d-width{
+    max-width: 440px;
+}
+
+.sm-width{
+    max-width: 300px;
+}
+
+.xsm-width{
+    max-width: 200px;
+}
+
+.content-width{
+    max-width: fit-content;
+}
+
+.full-width{
+    min-width: 100%;
+}
+
+.z-index-100{
+    position: absolute;
+    z-index: 100;
+}
+
+/* <===========================::Defaults::===========================> */
+
+.mdi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4em;
+    margin-right: 8px;
+}
+
+.simple-link{
+    color: var(--primaria);
+    font-weight: 500;
+}
+
+.simple-link:hover{
+    color: var(--primaria-escuro);
+}
+
+.info-row{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.info-row h4{
+    color: var(--cinza-escuro);
+    font-size: 1.125em;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.info-row p{
+    color: var(--cinza-escuro);
+    font-size: 1.125em;
+    margin-right: 5px;
+}
+
+.default-text{
+    color: var(--cinza-medio);
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.default-subtitle{
+    color: var(--cinza-escuro);
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.default-input-container{
+    display: flex;
+    gap: 16px;
+}
+
+.default-button--filled{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--preto);
+    background: var(--primaria);
+    height: 50px;
+    min-height: 50px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    padding: 30px 35px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 5px 20px 0;
+    position: relative;
+    transition: .2s ease-out;
+}
+
+.default-button--filled:hover{
+    opacity: .8;
+}
+
+.default-button--filled:disabled:hover{
+    opacity: .5;
+}
+
+.default-button--outline{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--primaria);
+    background: white;
+    height: 50px;
+    border: 1px solid var(--primaria);
+    border-radius: 4px;
+    width: 100%;
+    padding: 10px 35px;
+    transition: .2s ease-out;
+}
+
+.default-button--outline.red{
+    border: 1px solid var(--vermelho);
+    color: var(--vermelho);
+}
+
+.default-button--outline.green{
+    border: 1px solid var(--verde);
+    color: var(--verde);
+}
+
+.default-button--outline:hover{
+    opacity: .6;
+}
+
+.default-button--outline:disabled:hover{
+    opacity: .5;
+}
+
+.default-button--filled,
+.default-button--outline {
+    animation-name: enter-animation;
+    animation-duration: .4s;
+}
+
+@keyframes enter-animation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes error-card-animation {
+    from {
+        border: var(--amarelo) solid 1px;
+        background: yellowgreen;
+    }
+    to {
+        border: var(--vermelho-escuro) solid 1px;
+    }
+}
+
+.default-container{
+    padding: 30px;
+    background: white;
+    border: 1px solid var(--cinza-medio);
+    box-shadow: rgba(0, 0, 0, 0.1) 2px 5px 8px;
+}
+
+.default-container p {
+    color: var(--cinza-medio);
+}
+
+/* =============== HEADER =============== */
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px;
+    background: var(--preto);
+}
+
+/* =============== MAIN =============== */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px;
+}
+
+#photo-file {
+    display: none;
+}
+
+#photo-preview {
+    border: 5px solid var(--primaria);
+    border-radius: 8px;
+    max-width: 1280px;
+    margin: 2rem 0;
+}
+
+#canvas-preview {
+    margin: 10px 0;
+}
