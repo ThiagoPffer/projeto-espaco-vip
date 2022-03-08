@@ -1,9 +1,11 @@
 const pictureInput = document.getElementById('photo-file');
 const selectImageBtn = document.getElementById('select-image');
 const downloadImageBtn = document.getElementById('download-image');
-const canvasList = [];
+const canvasContainer = document.getElementById('canvas-container');
+var canvasList = [];
 
 selectImageBtn.onclick = function() {
+    reset();
     pictureInput.click();
 }
 
@@ -25,13 +27,18 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
                 downloadImageBtn.classList.remove('d-none');
             }
-            console.log('reading');
         })
     });
 });
 
+function reset() {
+    canvasList = [];
+    while (canvasContainer.firstChild) {
+        canvasContainer.removeChild(canvasContainer.firstChild);
+    }
+}
+
 function createNewCanvasElement(index) {
-    let canvasContainer = document.getElementById('canvas-container');
     let newCanvas = document.createElement('canvas');
     newCanvas.setAttribute('id', `canvas-preview-${index}`);
     newCanvas.setAttribute('class', 'canvas-preview');
