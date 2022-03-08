@@ -13,18 +13,19 @@
 <body>
     <header>
         <h1>Gerador de molduras</h1>
-        <p>Selecione uma imagem abaixo e clique em "Baixar":</p>
+        <p>Selecione uma ou várias imagens abaixo e clique em "Baixar":</p>
     </header>
     <main>
         <button id="select-image" class="default-button--filled d-width">
-            <input type="file" id="photo-file">
-            Selecionar Imagem
+            <input type="file" id="photo-file" multiple>
+            Selecionar Imagens
         </button>
 
-        <canvas id="canvas-preview" width="0" height="0"></canvas>
+        <div id="canvas-container">
+        </div>
 
         <div class="row-container justify-center full-width gap">
-            <button id="download-image" class="default-button--filled d-width d-none">Baixar</button>
+            <button id="download-image" class="default-button--filled d-width d-none">Baixar todos</button>
         </div>
     </main>
 
