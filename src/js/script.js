@@ -2,10 +2,13 @@ const pictureInput = document.getElementById('photo-file');
 const selectImageBtn = document.getElementById('select-image');
 const downloadImageBtn = document.getElementById('download-image');
 const canvasContainer = document.getElementById('canvas-container');
+const loadingSpin = document.getElementById('loading-spin');
+const pictureCounter = document.getElementById('picture-counter');
 var canvasList = [];
 
 selectImageBtn.onclick = function() {
     reset();
+    setLoading();
     pictureInput.click();
 }
 
@@ -28,6 +31,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 downloadImageBtn.classList.remove('d-none');
             }
         })
+        setPicturesCounter(pictureFiles.length);
     });
 });
 
@@ -35,6 +39,15 @@ function reset() {
     canvasList = [];
     while (canvasContainer.firstChild) {
         canvasContainer.removeChild(canvasContainer.firstChild);
+    }
+}
+
+function setPicturesCounter(counter) {
+    if (counter) {
+        pictureCounter.textContent = counter + ' imagens selecionadas';
+        pictureCounter.classList.remove('d-none');
+    } else {
+        pictureCounter.classList.add('d-none');
     }
 }
 
@@ -68,12 +81,31 @@ function drawLogo(baseImage, canvasContext, canvasPreview) {
 }
 
 downloadImageBtn.onclick = function() {
-    canvasList.forEach(canvasPreview => {
-        const link = document.createElement("a");
-        document.body.appendChild(link);
-        link.href = canvasPreview.toDataURL("image/jpeg");
-        link.download = "canvas-image.jpeg";
-        link.click();
-        document.body.removeChild(link);
-    });
+    setLoading(true, 'Carregando');
+    setTimeout(function name(params) {
+        var zip = new JSZip();
+        canvasList.forEach((canvasPreview, index) => {
+            setLoading(true, 'Processando imagens');
+            let folder = zip.folder('imagens');
+            let image = canvasPreview.toDataURL('image/jpeg');
+            let base64Index = image.indexOf(",");
+            if (base64Index !== -1) {
+                image = image.substring(base64Index + 1, image.length);
+            }
+            folder.file('espacovip-'+index+'.jpeg', image, {base64: true});
+        });
+        zip.generateAsync({type:"blob"}).then(function(content) {
+            saveAs(content, "imagens.zip");
+            setLoading(false);
+        });
+    }, 1000);
+}
+
+function setLoading(loading, text) {
+    if (loading) {
+        loadingSpin.textContent = text;
+        loadingSpin.classList.remove('d-none');
+    } else {
+        loadingSpin.classList.add('d-none');
+    }
 }

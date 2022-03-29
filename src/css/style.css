@@ -272,12 +272,6 @@ input{
     margin-right: 5px;
 }
 
-.default-text{
-    color: var(--cinza-medio);
-    font-size: 1em;
-    font-weight: 400;
-}
-
 .default-subtitle{
     color: var(--cinza-escuro);
     font-size: 1.5em;
@@ -407,6 +401,18 @@ main {
     align-items: center;
     justify-content: center;
     padding: 35px;
+}
+
+.default-text {
+    font-size: 1em;
+    margin: 16px 0;
+    color: black;
+}
+
+.loading {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
 }
 
 #photo-file {

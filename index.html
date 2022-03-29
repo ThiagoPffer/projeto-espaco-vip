@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://pictogrammers.github.io/@mdi/font/6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
@@ -20,15 +21,19 @@
             <input type="file" id="photo-file" multiple>
             Selecionar Imagens
         </button>
+        <span id="picture-counter" class="default-text d-none"></span>
 
         <div id="canvas-container">
         </div>
 
+        <span id="loading-spin" class="mdi mdi-loading mdi-spin loading default-text d-none"></span>
         <div class="row-container justify-center full-width gap">
             <button id="download-image" class="default-button--filled d-width d-none">Baixar todos</button>
         </div>
     </main>
 
     <script src="src/js/script.js" type="module"></script>
+    <script src="src/vendor/JSZip/dist/jszip.js"></script>
+    <script src="src/vendor/JSZip/vendor/FileSaver.js"></script>
 </body>
 </html>
