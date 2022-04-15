@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
             pictureFiles.push(pictureInput.files.item(i));
         }
         pictureFiles.forEach((pictureFile, index) => {
-            createNewCanvasElement(index);
+            createNewCanvasElement(index, pictureFile.name);
             let reader = new FileReader();
             reader.readAsDataURL(pictureFile);
             reader.onload = event => {
@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
                 downloadImageBtn.classList.remove('d-none');
             }
-        })
+        });
         setPicturesCounter(pictureFiles.length);
     });
 });
@@ -51,10 +51,11 @@ function setPicturesCounter(counter) {
     }
 }
 
-function createNewCanvasElement(index) {
+function createNewCanvasElement(index, fileName) {
     let newCanvas = document.createElement('canvas');
     newCanvas.setAttribute('id', `canvas-preview-${index}`);
     newCanvas.setAttribute('class', 'canvas-preview');
+    newCanvas.setAttribute('name', fileName);
     canvasContainer.appendChild(newCanvas);
 }
 
@@ -82,17 +83,19 @@ function drawLogo(baseImage, canvasContext, canvasPreview) {
 
 downloadImageBtn.onclick = function() {
     setLoading(true, 'Carregando');
-    setTimeout(function name(params) {
+    setTimeout(function name() {
         var zip = new JSZip();
         canvasList.forEach((canvasPreview, index) => {
             setLoading(true, 'Processando imagens');
             let folder = zip.folder('imagens');
+            let fileName = canvasPreview.getAttribute('name');
+            fileName = fileName.substring(0, fileName.indexOf('.'));
             let image = canvasPreview.toDataURL('image/jpeg');
             let base64Index = image.indexOf(",");
             if (base64Index !== -1) {
                 image = image.substring(base64Index + 1, image.length);
             }
-            folder.file('espacovip-'+index+'.jpeg', image, {base64: true});
+            folder.file(fileName + '.jpeg', image, {base64: true});
         });
         zip.generateAsync({type:"blob"}).then(function(content) {
             saveAs(content, "imagens.zip");
